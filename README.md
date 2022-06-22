@@ -12,4 +12,5 @@ A DB using [`BSON`](https://bsonspec.org/) as data storage and writed on [`Pytho
 - [ ] Rewrite to `C`
 
 ---
-Made by `TheStngularity` with `❤` for you!
+Made by `TheStngularity` with `❤` for you!<br>
+Distributed under the `MIT` license.
