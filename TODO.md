@@ -1,0 +1,34 @@
+# ToDo
+- [ ] String utils
+- [ ] Logger
+- [ ] YAML Reader & Writer
+- [ ] Binary utils
+- [ ] BSON Reader & Writer
+- [ ] BDSF (My binary format) Reader & Writer
+- [ ] SDBP (SyrDB Protocol) Decoder & Encoder
+- [ ] SQL (.sql) Reader & Writer
+- [ ] TCP Server
+- [ ] Add SSL/TLS support to TCP Server
+- [ ] Collections types
+    - [ ] NoSQL
+        - [ ] Key-Value
+        - [ ] Document
+    - [ ] SQL
+- [ ] Storage formats
+    - [ ] BSON
+    - [ ] BDSF
+    - [ ] SQL
+- [ ] HTTP (HyperText Transfer Protocol; Versions: 1.1, 2.0 and 3.0) Decoder & Encoder
+- [ ] Webpanel
+- [ ] Transfer data from...
+    - [ ] NoSQL Databases
+        - [ ] MongoDB
+    - [ ] SQL Databases 
+        - [ ] SQLite3
+        - [ ] PostgreSQL
+        - [ ] MySQL
+        - [ ] MariaDB
+- [ ] Final Testing
+- [ ] Add Linux support
+- [ ] Add macOS support
+- [ ] Add Solaris support
