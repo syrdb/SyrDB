@@ -3,20 +3,21 @@
     - [ ] Write `Task Manager`
     - [ ] Write `Cache Manager`
     - [ ] Write `Admin Panel Manager`
-- [ ] Write TCP Server
-    - [ ] Write `System TCP Socket`
-    - [ ] Write `TCP Connection`
-    - [ ] Write `Connection Manager`
-- [ ] String utils
+    - [ ] Write TCP Server
+        - [ ] Write `System TCP Socket`
+        - [ ] Write `TCP Connection`
+        - [ ] Write `Connection Manager`
+        - [ ] Add SSL/TLS support to TCP Server
+- [x] String utils
+- [x] Binary buffer
 - [ ] Logger
-- [ ] YAML Reader & Writer
-- [ ] Binary utils
-- [ ] BSON Reader & Writer
-- [ ] BDSF (My binary format) Reader & Writer
-- [ ] SDBP (SyrDB Protocol) Decoder & Encoder
-- [ ] SQL (.sql) Reader & Writer
-- [ ] TCP Server
-- [ ] Add SSL/TLS support to TCP Server
+- [ ] Write Readers & Writers (Decoders & Encodes)
+    - [ ] YAML Reader & Writer
+    - [ ] BSON Reader & Writer
+    - [ ] BDSF (My binary format) Reader & Writer
+    - [ ] SDBP (SyrDB Protocol) Decoder & Encoder
+    - [ ] SQL (.sql) Reader & Writer
+    - [ ] HTTP (HyperText Transfer Protocol; Versions: 1.1, 2.0 and 3.0) Decoder & Encoder
 - [ ] Collections types
     - [ ] NoSQL
         - [ ] Key-Value
@@ -26,7 +27,6 @@
     - [ ] BSON
     - [ ] BDSF
     - [ ] SQL
-- [ ] HTTP (HyperText Transfer Protocol; Versions: 1.1, 2.0 and 3.0) Decoder & Encoder
 - [ ] Webpanel
 - [ ] Transfer data from...
     - [ ] NoSQL Databases
