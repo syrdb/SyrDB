@@ -1,0 +1,77 @@
+/* Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 0.6vw;
+    border-radius: 6px;
+    background-color: var(--blocks);
+    height: 19.5vh;
+}
+
+/* - title */
+.card h1 svg {
+    width: 24px;
+    height: 24px;
+}
+
+.card h1 span {font-size: 1.4em;}
+
+/* - icons */
+.card .icons {
+    display: flex;
+    padding: 0.6vw;
+    -webkit-gap: 0.6vw;
+    gap: 0.6vw;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.card .icons div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    padding: 2px;
+    margin: 0;
+}
+
+.card .icons div.orange {
+    background-color: var(--orange-1);
+    fill: var(--orange);
+    color: var(--orange);
+}
+
+.card .icons div.blue {
+    background-color: var(--blue-1);
+    fill: var(--blue);
+    color: var(--blue);
+}
+
+/* - content */
+.card .content {
+    display: flex;
+    flex-direction: column;
+    -webkit-gap: 2px;
+    gap: 2px;
+}
+
+.card .content .iv svg {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+}
+
+.card .content .iv span {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.card .content .iv span span.mini {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--dark-color);
+}
