@@ -1,4 +1,12 @@
 # ToDo
+- [ ] Write `Core`
+    - [ ] Write `Task Manager`
+    - [ ] Write `Cache Manager`
+    - [ ] Write `Admin Panel Manager`
+- [ ] Write TCP Server
+    - [ ] Write `System TCP Socket`
+    - [ ] Write `TCP Connection`
+    - [ ] Write `Connection Manager`
 - [ ] String utils
 - [ ] Logger
 - [ ] YAML Reader & Writer
