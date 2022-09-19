@@ -54,9 +54,9 @@ Header {
 ###### *Таблица `#4`*
 Байт-код | Название        | Тип                       | З/О  | Описание
 -------- | --------------- | ------------------------- | ---- | ----------------------------------
-`0x1`    | **Provider**    | `Provider` (см. `2.2.3.`) | З    | Провайдер подключения (библиотека)
-`0x2`    | **Version**     | `UInt16` (см. `2.2.4.`)   | З, О | Версия протокола
-`0x3`    | **Description** | `String`                  | О    | Описание ответа
+`01`     | **Provider**    | `Provider` (см. `2.2.3.`) | З    | Провайдер подключения (библиотека)
+`02`     | **Version**     | `UInt16` (см. `2.2.4.`)   | З, О | Версия протокола
+`03`     | **Description** | `String`                  | О    | Описание ответа
 > `З` - Запрос; `О` - Ответ
 
 #### `2.2.3.` Провайдер подключения
@@ -85,8 +85,38 @@ Provider {
 ## `3.` Код статуса ответа и коды операции
 ### `3.1.` Коды операции
 ###### *Таблица `#7`*
-Байт-код | Категория | Описание
+Байт-код | Категория                                                                                                   | Описание
+-------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------
+`00`     | ![info](https://img.shields.io/badge/-%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-blue)    | Получить информацию о базе данных
+`01`     | ![info](https://img.shields.io/badge/-%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-blue)    | Получение состояния сервера
+`02`     | ![db](https://img.shields.io/badge/-%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-orange) | Список баз данных
+`03`     | ![db](https://img.shields.io/badge/-%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-orange) | Создать базу данных
+`04`     | ![db](https://img.shields.io/badge/-%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-orange) | Удалить базу данных
+`05`     | ![db](https://img.shields.io/badge/-%D0%91%D0%B0%D0%B7%D0%B0%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-orange) | Изменить базу данных
+`06`     | ![coll](https://img.shields.io/badge/-%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F-yellow)        | Список коллекций
+`07`     | ![coll](https://img.shields.io/badge/-%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F-yellow)        | Создать коллекцию
+`08`     | ![coll](https://img.shields.io/badge/-%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F-yellow)        | Удалить коллекцию
+`09`     | ![coll](https://img.shields.io/badge/-%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F-yellow)        | Изменить коллекцию
+`0A`     | ![item](https://img.shields.io/badge/-%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B-brightgreen)               | Внести объект в коллекцию
+`0B`     | ![item](https://img.shields.io/badge/-%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B-brightgreen)               | Внести множество объектов в коллекции
+`0C`     | ![item](https://img.shields.io/badge/-%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B-brightgreen)               | Обновить объект в коллекции
+`0D`     | ![item](https://img.shields.io/badge/-%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B-brightgreen)               | Обновить множество объектов в коллекции
+`0F`     | ![item](https://img.shields.io/badge/-%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B-brightgreen)               | Удалить объект из коллекции
+`10`     | ![item](https://img.shields.io/badge/-%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B-brightgreen)               | Удалить множество объектов из коллекции
+`11`     | ![server](https://img.shields.io/badge/-%D0%A1%D0%B5%D1%80%D0%B2%D0%B5%D1%80-lightgrey)                     | Обновить сервер (если есть обновления)
 
+### `3.2.` Статус коды
+###### *Таблица `#8`*
+Байт-код | Категория                                                                                                                   | Описание
+-------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------
+`00`     | ![success](https://img.shields.io/badge/-%D0%A3%D1%81%D0%BF%D0%B5%D1%85-green)                                              | Операция выполнена успешно
+`01`     | ![err](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%A1%D0%B5%D1%80%D0%B2%D0%B5%D1%80)-red)     | Неизвестная ошибка
+`02`     | ![err](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%A1%D0%B5%D1%80%D0%B2%D0%B5%D1%80)-red)     | Файл базы данных недоступен
+`03`     | ![cerr](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82)-orange) | Авторизация не пройдена
+`04`     | ![cerr](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82)-orange) | Недостаточно прав
+`05`     | ![cerr](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82)-orange) | У вас нет доступа к этой базе данных
+`06`     | ![cerr](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82)-orange) | Недостаточно аргументов
+`07`     | ![cerr](https://img.shields.io/badge/-%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%20(%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82)-orange) | Неверный тип аргумента
 
 ---
 - ¹ - `N` = любое число; `B` = кол-во байт.
