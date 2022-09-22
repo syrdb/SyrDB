@@ -10,16 +10,16 @@
 #include <vector>
 #include "stringutils.h"
 
-namespace TheSngularity::SyrDB::StrU {
+namespace TheStngularity::SyrDB::StrU {
     // Normolize text size
     std::string normalizeText(std::string content, short size=2, char replace='0') {
-        for(int i = 0; i < size-content.length(); i++) content.insert(0, replace);
+        for(int i = 0; i < size-content.length(); i++) content.insert(0, std::to_string(replace));
         return content;
     }
 
     std::string normalizeText(int content, short size=2, char replace='0') {
         std::string str = std::to_string(content);
-        for(int i = 0; i < size-std::to_string(content).length(); i++) str.insert(0, replace);
+        for(int i = 0; i < size-std::to_string(content).length(); i++) str.insert(0, std::to_string(replace));
         return str;
     }
 

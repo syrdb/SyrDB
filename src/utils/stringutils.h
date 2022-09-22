@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-namespace TheSngularity::SyrDB::StrU {
+namespace TheStngularity::SyrDB::StrU {
     /**
      * @brief Normolize text size
      * @param content Content to normolize

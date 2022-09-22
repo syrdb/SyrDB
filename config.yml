@@ -1,0 +1,51 @@
+# SyrDB v0.0.1 Config
+# Database main settings
+database:
+  network:
+    host: "127.0.0.1"  # Server host
+    port: 1859  # Server port
+
+  cache:
+    enable: true  # Whether to enable cache
+    maxDatabases: 5  # Max databases in cache
+    maxCollection: 5  # Max collections in cache
+    maxItems: 10  # Max items in collections in cache
+
+  dataFolder: "./data"  # Storage (data) folder
+
+# WebPanel settings
+webpanel:
+  enable: true  # Whether to listen the http connections & display SyrDB WebPanel
+  http: ">= 1.1; <= 3.0"  # Required HTTP version
+  cert: null  # TLS/SSL Certification
+  key: null  # TLS/SSL Key
+  users:  # WebPanel users
+    - username: "root"  # Example user name. CHANGE ME
+      password: "root"  # Example user password. CHANGE ME
+      permissions: admin  # Example user permissions
+
+# Logger settings
+logger:
+  console:
+    enable: true  # Whether to logging to the console
+    level: DEBUG  # Logger level, available: INFO, WARN, ERROR and DEBUG
+
+  file:
+    enable: true
+    level: DEBUG
+    folder: "logs"  # Logger folder, null = "."
+    filename: "[DD.MM.YYYY].log"  # File name, supports time placeholders ([<format>])
+    loggingFormat: sdb-journal  # File logging format, available: sdb-journal, json or yaml
+
+# Security Settings
+security:
+  auth:
+    enable: true  # Whether to require authorization
+    accessToken: "CHANGE ME"  # SyrDB access token
+    users:  # Users available for authorization
+      - username: "root"  # Example user name. CHANGE ME
+        password: "root"  # Example user password. CHANGE ME
+        permissions: admin  # Example user permissions
+        db: "$all"  # Database available for this user, $all - to specify all
+    
+  maxConnections: 10  # Maximum number of connections to the database at same time. -1 = infinitely

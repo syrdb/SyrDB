@@ -34,13 +34,6 @@ namespace TheStngularity::SyrDB {
              * @param size Number of bytes to read
              * @return Readed bytes
              */
-            std::vector<byte> read(unsigned short size);
-
-            /**
-             * @brief Read the specified size of bytes
-             * @param size Number of bytes to read
-             * @return Readed bytes
-             */
             std::vector<byte> read(unsigned int size);
 
             /**
@@ -48,13 +41,6 @@ namespace TheStngularity::SyrDB {
              * @param binary Bytes to write
              */
             void write(std::vector<byte> binary);
-
-            /**
-             * @brief Insert any bytes to buffer by specified index
-             * @param index Index of bytes insert
-             * @param binary Bytes to insert
-             */
-            void insert(unsigned short index, std::vector<byte> binary);
 
             /**
              * @brief Insert any bytes to buffer by specified index
@@ -85,7 +71,7 @@ namespace TheStngularity::SyrDB {
              * @brief Reset cursor position
              */
             void reset();
-    }
+    };
 }
 
 #endif

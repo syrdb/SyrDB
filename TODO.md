@@ -1,16 +1,18 @@
 # ToDo
 - [ ] Write `Core`
-    - [ ] Write `Task Manager`
+    - [ ] Write Logger
+    - [x] Write `Task Manager`
     - [ ] Write `Cache Manager`
-    - [ ] Write `Admin Panel Manager`
+    - [ ] Write `WebPanel Manager`
     - [ ] Write TCP Server
         - [ ] Write `System TCP Socket`
         - [ ] Write `TCP Connection`
         - [ ] Write `Connection Manager`
         - [ ] Add SSL/TLS support to TCP Server
-- [x] String utils
-- [x] Binary buffer
-- [ ] Logger
+- [x] Utils
+    - [x] String utils
+    - [x] Binary buffer
+
 - [ ] Write Readers & Writers (Decoders & Encodes)
     - [ ] YAML Reader & Writer
     - [ ] BSON Reader & Writer
