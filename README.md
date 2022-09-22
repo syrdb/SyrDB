@@ -35,7 +35,7 @@ This database currently only supports Windows, but support for Linux and macOS w
 <h3>Install on Windows</h3>
 First you need to open the console and write:
 
-```ps
+```sh
 $ git clone https://github.com/TheStngularity/SyrDB.git
 $ cd SyrDB
 $ .\install.ps1 <install_path>
