@@ -12,3 +12,4 @@ build/
 # Other
 i18n/
 specification/
+/.vs

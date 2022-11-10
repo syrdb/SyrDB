@@ -40,14 +40,10 @@ namespace TheStngularity::SyrDB {
         return std::get<std::string>(value);
     }
 
-    // Get short value from data by key
-    short Dictionary::getShort(std::string key) {
-        return (short) this->getString(key).c_str();
-    }
-
-    // Get integer value from data by key
-    int Dictionary::getInt(std::string key) {
-        return (int) this->getString(key).c_str();
+    // Get non-string value from data by key
+    template <class T>
+    T Dictionary::getNonString(std::string key) {
+        return (T)this.getString(key).c_str();
     }
 
     // Get boolean value from data by key
@@ -80,13 +76,9 @@ namespace TheStngularity::SyrDB {
         this->data.insert(std::make_pair(key, value));
     }
 
-    // Set short value of key
-    void Dictionary::setShort(std::string key, short value) {
-        this->setString(key, std::to_string(value));
-    }
-
-    // Set integer value of key
-    void Dictionary::setInt(std::string key, int value) {
+    // Set non-string value of key
+    template <class T>
+    T Dictionary::setNonString(std::string key, T value) {
         this->setString(key, std::to_string(value));
     }
 
