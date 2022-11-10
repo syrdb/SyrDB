@@ -2,7 +2,7 @@
     SyrDB/Dictionary - Dictionary type
     [dictionary.h] - Main file (Annotation)
     Made with ❤ for you
-    Distributed under the MIT license (see LICENSE file)
+    Distributed under the BSL license (see LICENSE file)
 */
 
 #ifndef DICTIONARY_H_
@@ -33,18 +33,12 @@ namespace TheStngularity::SyrDB {
             std::string getString(std::string key);
 
             /**
-             * @brief Get short value from data by key
-             * @param key Key (key1.key2...)
-             * @return Short value 
-             */
-            short getShort(std::string key);
-
-            /**
-             * @brief Get integer value from data by key
-             * @param key Key (key1.key2...)
-             * @return Integer value
-             */
-            int getInt(std::string key);
+            * @brief Get non-string value from data by key
+            * @param key Key (key1.key2...)
+            * @return Numeric value
+            */
+            template<class T>
+            T getNonString(std::string key);
 
             /**
              * @brief Get boolean value from data by key
@@ -68,18 +62,12 @@ namespace TheStngularity::SyrDB {
             void setString(std::string key, std::string value);
 
             /**
-             * @brief Set short value of key
-             * @param key Key (key1.key2...)
-             * @param value Short value
-             */
-            void setShort(std::string key, short value);
-
-            /**
-             * @brief Set integer value of key
-             * @param key Key (key1.key2...)
-             * @param value Integer value
-             */
-            void setInt(std::string key, int value);
+            * @brief Set non-string value of key
+            * @param key Key (key1.key2...)
+            * @param value Non-string value
+            */
+            template<class T>
+            T setNonString(std::string key, T value);
 
             /**
              * @brief Set boolean value of key

@@ -2,7 +2,7 @@
     SyrDB/TaskManager - Manager of tasks (For example, database:create and database:drop)
     [task_manager.h] - Main file (Annotation)
     Made with ❤ for you
-    Distributed under the MIT license (see LICENSE file)
+    Distributed under the BSL license (see LICENSE file)
 */
 
 #ifndef TASK_MANAGER_H_
