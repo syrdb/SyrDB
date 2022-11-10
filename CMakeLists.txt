@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
-set(GIT_HASH "000000")
+set(GIT_HASH "92ea0dd")
 set(VERSION2P "a1.dev-${GIT_HASH}")
 set(BUILD "Alpha development build")
 
