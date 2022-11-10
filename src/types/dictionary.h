@@ -2,7 +2,7 @@
     SyrDB/Dictionary - Dictionary type
     [dictionary.h] - Main file (Annotation)
     Made with ❤ for you
-    Distributed under the MIT license (see LICENSE file)
+    Distributed under the BSL license (see LICENSE file)
 */
 
 #ifndef DICTIONARY_H_
