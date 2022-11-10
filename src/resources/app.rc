@@ -1,0 +1,37 @@
+#include <winver.h>
+#include "verinfo.h"
+
+100 ICON "icon.ico"          // App icon
+
+VS_VERSION_INFO VERSIONINFO  // Version info
+    FILEVERSION MAJOR, MINOR, PATCH, 0
+    PRODUCTVERSION MAJOR, MINOR, PATCH, 0
+    FILEOS 0x40004L
+    FILETYPE 0x1L
+    FILESUBTYPE 0x0L
+
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName", "TheStngularity\0"
+            VALUE "LegalCopyright", "Copyright (C) TheStngularity\0"
+            
+            VALUE "FileVersion", VERSION
+            VALUE "FileDescription", "SyrDB Server\0"
+
+            VALUE "ProductName", "SyrDB"
+            VALUE "ProductVersion", VERSION
+
+            VALUE "InternalName", "syrdb.exe"
+            VALUE "OriginalFilename", "syrdb.exe"
+
+            VALUE "SpecialBuild", BUILD
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
