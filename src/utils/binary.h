@@ -2,7 +2,7 @@
     SyrDB/Binary - Library for working with binary
     [binary.h] - Main file (Annotation)
     Made with ❤ for you
-    Distributed under the BSL license (see LICENSE file)
+    Distributed under the MIT license (see LICENSE file)
 */
 
 #ifndef BINARY_H_

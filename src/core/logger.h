@@ -2,7 +2,7 @@
     SyrDB/Logger - Logger lib
     [logger.h] - Main file (Annotation)
     Made with ❤ for you
-    Distributed under the BSL license (see LICENSE file)
+    Distributed under the MIT license (see LICENSE file)
 */
 
 #ifndef LOGGER_H_

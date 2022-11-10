@@ -2,7 +2,7 @@
     SyrDB/StringUtils - Library for working with string
     [stringutils.h] - Main file (Annotation)
     Made with ❤ for you
-    Distributed under the BSL license (see LICENSE file)
+    Distributed under the MIT license (see LICENSE file)
 */
 
 #ifndef STRINGUTILS_H_

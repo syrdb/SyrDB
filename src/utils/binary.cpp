@@ -2,7 +2,7 @@
     SyrDB/Binary - Library for working with binary
     [binary.cpp] - Main file
     Made with ❤ for you
-    Distributed under the BSL license (see LICENSE file)
+    Distributed under the MIT license (see LICENSE file)
 */
 
 #include <vector>
