@@ -37,6 +37,8 @@ This database currently only supports Windows, but support for Linux and macOS w
 
 <h3>Requirements</h3>
 
+- CMake 3.12+
+- Visual Studio 2022 (tested)
 
 <h3>Build on Windows</h3>
 
