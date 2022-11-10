@@ -1,6 +1,6 @@
 # ToDo
 - [ ] Write `Core`
-    - [ ] Write Logger
+    - [x] Write Logger
     - [x] Write `Task Manager`
     - [ ] Write `Cache Manager`
     - [ ] Write `WebPanel Manager`
@@ -12,7 +12,6 @@
 - [x] Utils
     - [x] String utils
     - [x] Binary buffer
-
 - [ ] Write Readers & Writers (Decoders & Encodes)
     - [ ] YAML Reader & Writer
     - [ ] BSON Reader & Writer

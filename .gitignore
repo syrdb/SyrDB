@@ -4,3 +4,11 @@ build/
 
 # Editor dir
 .vscode/
+.idea/
+
+# Private
+*.private*
+
+# Other
+i18n/
+specification/

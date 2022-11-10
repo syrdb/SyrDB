@@ -5,8 +5,6 @@
     Distributed under the MIT license (see LICENSE file)
 */
 
-#include <iostream>
-#include <vector>
 #include "task.h"
 #include "task_manager.h"
 

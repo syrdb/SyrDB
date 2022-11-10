@@ -5,9 +5,7 @@
     Distributed under the MIT license (see LICENSE file)
 */
 
-#include <iostream>
-#include <map>
-#include "../types/dictionary.h"
+#include "../../types/dictionary.h"
 #include "task.h"
 
 namespace TheStngularity::SyrDB {

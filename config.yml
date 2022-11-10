@@ -20,7 +20,7 @@ webpanel:
   cert: null  # TLS/SSL Certification
   key: null  # TLS/SSL Key
   users:  # WebPanel users
-    - username: "root"  # Example user name. CHANGE ME
+    - username: "root"  # Example username. CHANGE ME
       password: "root"  # Example user password. CHANGE ME
       permissions: admin  # Example user permissions
 
@@ -43,7 +43,7 @@ security:
     enable: true  # Whether to require authorization
     accessToken: "CHANGE ME"  # SyrDB access token
     users:  # Users available for authorization
-      - username: "root"  # Example user name. CHANGE ME
+      - username: "root"  # Example username. CHANGE ME
         password: "root"  # Example user password. CHANGE ME
         permissions: admin  # Example user permissions
         db: "$all"  # Database available for this user, $all - to specify all

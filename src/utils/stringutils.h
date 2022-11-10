@@ -13,22 +13,52 @@
 
 namespace TheStngularity::SyrDB::StrU {
     /**
-     * @brief Normolize text size
-     * @param content Content to normolize
-     * @param size Required minimal size
-     * @param replace Chat to add 
-     * @return Normolized text
+     * @brief Normalize text size
+     * @param content Content to normalize
+     * @return Normalized text
      */
-    std::string normalizeText(std::string content, short size=2, char replace='0');
+    std::string normalizeText(std::string content);
 
     /**
-     * @brief Normolize text size
-     * @param content Content to normolize
+     * @brief Normalize text size
+     * @param content Content to normalize
+     * @param size Required minimal size
+     * @return Normalized text
+     */
+    std::string normalizeText(std::string content, short size);
+
+    /**
+     * @brief Normalize text size
+     * @param content Content to normalize
      * @param size Required minimal size
      * @param replace Chat to add 
-     * @return Normolized text
+     * @return Normalized text
      */
-    std::string normalizeText(int content, short size=2, char replace='0');
+    std::string normalizeText(std::string content, short size, char replace);
+
+    /**
+     * @brief Normalize text size
+     * @param content Content to normalize
+     * @return Normalized text
+     */
+    std::string normalizeText(int content);
+
+    /**
+     * @brief Normalize text size
+     * @param content Content to normalize
+     * @param size Required minimal size
+     * @return Normalized text
+     */
+    std::string normalizeText(int content, short size);
+
+    /**
+     * @brief Normalize text size
+     * @param content Content to normalize
+     * @param size Required minimal size
+     * @param replace Chat to add 
+     * @return Normalized text
+     */
+    std::string normalizeText(int content, short size, char replace);
 
     /**
      * @brief Split any string
@@ -37,6 +67,15 @@ namespace TheStngularity::SyrDB::StrU {
      * @return Array with splited text
      */
     std::vector<std::string> split(std::string str, char sep);
+
+    /**
+     * @brief Replace any chars to another string
+     * @param str Source string
+     * @param old Old chars
+     * @param _new New chars
+     * @return Updated string
+     */
+    std::string replace(std::string str, std::string old, std::string _new);
 }
 
 #endif

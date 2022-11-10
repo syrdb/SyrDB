@@ -5,12 +5,16 @@
     Distributed under the MIT license (see LICENSE file)
 */
 
-#include <iostream>
 #include <vector>
 #include "binary.h"
 
 namespace TheStngularity::SyrDB {
-    BinaryBuffer::BinaryBuffer(std::vector<byte> binary = {}) {
+    BinaryBuffer::BinaryBuffer() {
+        this->buffer = {};
+        this->pos = 0;
+    }
+
+    BinaryBuffer::BinaryBuffer(std::vector<byte> binary) {
         this->buffer = binary;
         this->pos = 0;
     }
@@ -21,8 +25,7 @@ namespace TheStngularity::SyrDB {
         for(unsigned int i = 0; i < size && this->pos < this->size(); i++) {
             output.push_back(this->buffer[this->pos + i]);
             this->pos++;
-        };
-        return output;
+        } return output;
     }
 
     // Write any bytes to buffer

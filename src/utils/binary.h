@@ -25,9 +25,14 @@ namespace TheStngularity::SyrDB {
         public:
             /**
              * @brief Construct a new Binary Buffer object
+             */
+            BinaryBuffer();
+
+            /**
+             * @brief Construct a new Binary Buffer object
              * @param binary Content of this buffer
              */
-            BinaryBuffer(std::vector<byte> binary = {});
+            BinaryBuffer(std::vector<byte> binary);
 
             /**
              * @brief Read the specified size of bytes

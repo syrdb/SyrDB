@@ -9,14 +9,13 @@
 #define TASK_H_
 
 #include <iostream>
-#include <map>
-#include "../types/dictionary.h"
+#include "../../types/dictionary.h"
 
 namespace TheStngularity::SyrDB {
     /**
      * @brief Task types
      */
-    enum class TaskType : char {
+    enum class TaskType : unsigned char {
         NONE = 0xFF,
 
         // Information
