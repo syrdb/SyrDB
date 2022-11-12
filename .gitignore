@@ -1,6 +1,7 @@
 # Build
 build/
 *.exe
+verinfo.h
 
 # Editor dir
 .vscode/
@@ -8,7 +9,3 @@ build/
 
 # Private
 *.private*
-
-# Other
-i18n/
-specification/

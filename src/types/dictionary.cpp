@@ -2,7 +2,7 @@
     SyrDB/Dictionary - Dictionary type
     [dictionary.cpp] - Main file
     Made with ❤ for you
-    Distributed under the MIT license (see LICENSE file)
+    Distributed under the BSL license (see LICENSE file)
 */
 
 #include <iostream>
@@ -10,6 +10,7 @@
 #include <variant>
 #include <string>
 #include <map>
+#include <type_traits>
 #include "../utils/stringutils.h"
 #include "dictionary.h"
 
@@ -22,95 +23,68 @@ namespace TheStngularity::SyrDB {
         this->data = data;
     }
 
-    // Get string value from data by key
-    std::string Dictionary::getString(std::string key) {
-        std::string currentKey = "";
-        std::variant<std::string, stringMap> value = this->data;
-        
-        for(std::string k : TheStngularity::SyrDB::StrU::split(key, '.')) {
-            currentKey += currentKey.length() == 0 ? "." + k : k;
-            if(TheStngularity::SyrDB::StrU::split(std::get<stringMap>(value)[k], ':')[0] == "$dictionary") {
-                value = this->getDictionary(currentKey).asMap();
-            } else {
-                value = std::get<stringMap>(value)[k];
-            }
-        }
-
-        delete &currentKey;
-        return std::get<std::string>(value);
-    }
-
-    // Get short value from data by key
-    short Dictionary::getShort(std::string key) {
-        return (short) this->getString(key).c_str();
-    }
-
-    // Get integer value from data by key
-    int Dictionary::getInt(std::string key) {
-        return (int) this->getString(key).c_str();
-    }
-
-    // Get boolean value from data by key
-    bool Dictionary::getBoolean(std::string key) {
-        return this->getString(key) == "1";
-    }
-
-    // Get dictionary value from data by key
-    Dictionary Dictionary::getDictionary(std::string key) {
-        std::string currentKey = "";
-        std::variant<std::string, stringMap> value = this->data;
-        
-        for(std::string k : TheStngularity::SyrDB::StrU::split(key, '.')) {
-            currentKey += currentKey.length() == 0 ? "." + k : k;
-            value = std::get<stringMap>(value)[k];
-        }
-
-        delete &currentKey;
-        value = TheStngularity::SyrDB::StrU::split(std::get<std::string>(value), ':')[1];
+    Dictionary Dictionary::parseDictionary(std::string string) {
         stringMap map;
-        for(std::string kv : TheStngularity::SyrDB::StrU::split(std::get<std::string>(value), ';')) {
+
+        std::string value = TheStngularity::SyrDB::StrU::split(string, ':')[1];
+        for(std::string kv : TheStngularity::SyrDB::StrU::split(value, ';')) {
             std::vector<std::string> keyAndValue = TheStngularity::SyrDB::StrU::split(kv, '=');
             map.insert(std::make_pair(keyAndValue[0], keyAndValue[1]));
         }
+        
         return Dictionary(map);
     }
 
-    // Set string value of key
-    void Dictionary::setString(std::string key, std::string value) {
-        this->data.insert(std::make_pair(key, value));
-    }
+    // Get any value from data by key
+    template<typename T>
+    T Dictionary::get(std::string key) {
+        if(std::is_same<T, std::string>::value) {
+            std::variant<std::string, stringMap> value = this->data;
+            for(std::string k : TheStngularity::SyrDB::StrU::split(key, '.')) {
+                value = std::get<stringMap>(value)[k];
 
-    // Set short value of key
-    void Dictionary::setShort(std::string key, short value) {
-        this->setString(key, std::to_string(value));
-    }
+                if(TheStngularity::SyrDB::StrU::split(std::get<std::string>(value), ':')[0] == "$dictionary")
+                    value = this->parseDictionary(std::get<std::string>(value));
+            }
 
-    // Set integer value of key
-    void Dictionary::setInt(std::string key, int value) {
-        this->setString(key, std::to_string(value));
-    }
+            return std::get<std::string>(value);
+        } else if(std::is_same<T, bool>::value) {
+            return this->get<std::string>(key) == "1";
+        } else if(std::is_same<T, Dictionary>::value) {
+            std::variant<std::string, stringMap> value = this->data;
+            for(std::string k : TheStngularity::SyrDB::StrU::split(key, '.'))
+                value = std::get<stringMap>(value)[k];
 
-    // Set boolean value of key
-    void Dictionary::setBoolean(std::string key, bool value) {
-        this->setString(key, value ? "1" : "0");
-    }
-
-    // Set dictionary value of key
-    void Dictionary::setDictionary(std::string key, Dictionary value) {
-        std::string result = "$dictionary:";
-        stringMap map = value.asMap();
-
-        int index = 0;
-        for(stringMap::iterator iter = map.begin(); iter != map.end(); ++iter) {
-            result += iter->first + "=" + iter->second;
-            if(index < map.size() - 1) result += ";";
-            index++;
+            return this->parseDictionary(std::get<std::string>(value));
         }
+        
+        return (T) this->get<std::string>(key).c_str();
+    }
 
-        delete &map;
-        delete &index;
-        this->setString(key, result);
-        delete &result;
+    // Set any value of key
+    template<typename T>
+    void Dictionary::set(std::string key, T value) {
+        if(std::is_same<T, std::string>::value) {
+            this->data.insert(std::make_pair(key, value));
+        } else if(std::is_same<T, bool>::value) {
+            this->set<std::string>(key, std::to_string(value));
+        } else if(std::is_same<T, Dictionary>::value) {
+            std::string* result = new std::string("$dictionary:");
+            stringMap map = value.asMap();
+
+            int index = 0;
+            for(stringMap::iterator iter = map.begin(); iter != map.end(); ++iter) {
+                *result += iter->first + "=" + iter->second;
+                if(index < map.size() - 1) *result += ";";
+                index++;
+            }
+
+            delete &map; delete &index;
+            this->set<std::string>(key, *result);
+            delete result;
+        } else {
+            this->set<std::string>(key, std::to_string(value));
+        }
     }
 
     // Convert this type to map

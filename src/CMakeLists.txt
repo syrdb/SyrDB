@@ -1,9 +1,11 @@
 # Components
-add_subdirectory(types)
 add_subdirectory(utils)
+add_subdirectory(types)
 add_subdirectory(core)
 
 # Executable
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/resources/verinfo.h.in ${CMAKE_CURRENT_SOURCE_DIR}/resources/verinfo.h)
+
 if(APPLE)
     add_executable(${PROJECT_NAME} MACOSX_BUNDLE main.cpp)
 else()
@@ -19,10 +21,10 @@ if(APPLE)
     )
 elseif(WIN32 AND MSVC)
     add_definitions(-DCHECKNEWVERSION)
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/resources/verinfo.h.in ${CMAKE_CURRENT_SOURCE_DIR}/resources/verinfo.h)
     target_sources(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/resources/app.rc") 
 endif()
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} SyrDB-Logger)
+target_link_libraries(${PROJECT_NAME} SyrDB-Dictionary)
 # TODO: target link libraries

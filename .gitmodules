@@ -1,0 +1,3 @@
+[submodule "BDSF-specification"]
+    path = specification/bdsf
+    url = https://github.com/TheStngularity/BDSF/blob/main/specification/ru_RU.md

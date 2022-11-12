@@ -15,19 +15,17 @@ BEGIN
     BEGIN
         BLOCK "040904E4"
         BEGIN
-            VALUE "CompanyName", "TheStngularity\0"
-            VALUE "LegalCopyright", "Copyright (C) TheStngularity\0"
+            VALUE "CompanyName", "TheStngularity"
+            VALUE "LegalCopyright", "Copyright (C) TheStngularity"
             
             VALUE "FileVersion", VERSION
-            VALUE "FileDescription", "SyrDB Server\0"
+            VALUE "FileDescription", DESCRIPTION
 
-            VALUE "ProductName", "SyrDB"
+            VALUE "ProductName", "SyrDB (" URL ")"
             VALUE "ProductVersion", VERSION
 
             VALUE "InternalName", "syrdb.exe"
             VALUE "OriginalFilename", "syrdb.exe"
-
-            VALUE "SpecialBuild", BUILD
         END
     END
     BLOCK "VarFileInfo"
