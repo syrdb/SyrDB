@@ -7,11 +7,10 @@ env:
 
 jobs:
   build:
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.name }}
     strategy:
       matrix:
-        config:
+        include:
           - name: "windows"
             os: windows-latest
             artifact: "syrdb-windows.exe"
@@ -22,15 +21,17 @@ jobs:
             artifact: "syrdb-linux"
             file: "syrdb"
 
+    runs-on: ${{ matrix.os }}
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Install dependencies on Windows
-        if: contains(matrix.config.name, 'windows')
+        if: contains(matrix.name, 'windows')
         run: choco install ninja cmake
 
       - name: Install dependencies on Ubuntu
-        if: contains(matrix.config.name, 'linux')
+        if: contains(matrix.name, 'linux')
         run: |
           sudo apt-get update
           sudo apt-get install ninja-build cmake
@@ -48,8 +49,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: ./src/Release/${{ matrix.config.file }}
-          name: ${{ matrix.config.artifact }}
+          path: ./src/Release/${{ matrix.file }}
+          name: ${{ matrix.artifact }}
           if-no-files-found: error
 
   release:
