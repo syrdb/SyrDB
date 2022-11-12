@@ -13,10 +13,12 @@ jobs:
         include:
           - name: "windows"
             os: windows-latest
-            extension: "exe"
+            file: "syrdb.exe"
+            extension: ".exe"
 
           - name: "linux"
             os: ubuntu-latest
+            file: "syrdb"
             extension: ""
 
     runs-on: ${{ matrix.os }}
@@ -37,7 +39,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: "**/syrdb*"
+          path: "**/${{ matrix.file }}"
           name: syrdb-${{ matrix.name }}${{ matrix.extension }}
           if-no-files-found: error
 
@@ -48,14 +50,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Get version
+        runs: |
+          VER1=$(grep -oP "[0-9]+\.[0-9]+\.[0-9]+" CMakeLists.txt)
+          VER2=$(grep -oP "(a|b|rc)[0-9]+(.dev[0-9]+)?" CMakeLists.txt)
+          echo "VERSION=$VER1$VER2" >> $GITHUB_ENV
+
       - name: Download artifacts
         uses: actions/download-artifact@v3
 
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "${{ github.ref_name }}"
-          name: "SyrDB ${{ github.ref_name }}"
+          tag_name: "${{ env.VERSION }}"
+          name: "SyrDB ${{ env.VERSION }}"
           files: |
             LICENSE
-            **/syrdb-*
+            **/*.exe
+            **/syrdb

@@ -21,7 +21,7 @@ execute_process(COMMAND git describe --always --abbrev=8
 				OUTPUT_VARIABLE GIT_HASH
 				OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-set(VERSION "${PROJECT_VERSION}a1.dev-${GIT_HASH}")
+set(VERSION "${PROJECT_VERSION}a1.dev1-${GIT_HASH}")
 
 # Info
 message("")
