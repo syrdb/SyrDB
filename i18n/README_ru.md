@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://github.com/TheStngularity/SyrDB">
-        <img alt="Версия" src="https://img.shields.io/github/v/tag/TheStngularity/SyrDB?color=EF2152&label=Версия">
+        <img alt="Версия" src="https://img.shields.io/github/v/tag/TheStngularity/SyrDB?color=EF2152&label=%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F">
     </a>
     <a href="https://github.com/TheStngularity/SyrDB">
         <img alt="C++" src="https://img.shields.io/badge/C++-20-EF2152">
