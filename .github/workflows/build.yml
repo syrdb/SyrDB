@@ -1,0 +1,71 @@
+name: Build SyrDB
+
+on: [push, pull_request]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      matrix:
+        config:
+          - name: "windows"
+            os: windows-latest
+            artifact: "syrdb-windows.exe"
+            file: "syrdb.exe"
+
+          - name: "linux"
+            os: ubuntu-latest
+            artifact: "syrdb-linux"
+            file: "syrdb"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies on Windows
+        if: contains(matrix.config.name, 'windows')
+        run: choco install ninja cmake
+
+      - name: Install dependencies on Ubuntu
+        if: contains(matrix.config.name, 'linux')
+        run: |
+          sudo apt-get update
+          sudo apt-get install ninja-build cmake
+
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+      - name: Test
+        working-directory: ${{github.workspace}}/build
+        run: ctest -C ${{env.BUILD_TYPE}}
+
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./src/Release/${{ matrix.config.file }}
+          name: ${{ matrix.config.artifact }}
+          if-no-files-found: error
+
+  release:
+    name: Release
+    needs: [build]
+    runs-os: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Publish
+        uses: softprops/action-gh-release@v1
+        with:
+          name: SyrDB ${{ github.ref_name }}
+          files: |
+            LICENSE
+            **/syrdb-*
