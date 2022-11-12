@@ -13,13 +13,9 @@ jobs:
         include:
           - name: "windows"
             os: windows-latest
-            artifact: "syrdb-windows.exe"
-            file: "syrdb.exe"
 
           - name: "linux"
             os: ubuntu-latest
-            artifact: "syrdb-linux"
-            file: "syrdb"
 
     runs-on: ${{ matrix.os }}
 
@@ -39,8 +35,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: ./src/Release/${{ matrix.file }}
-          name: ${{ matrix.artifact }}
+          path: "**/syrdb*"
+          name: syrdb-${{ matrix.name }}
           if-no-files-found: error
 
   publish:
