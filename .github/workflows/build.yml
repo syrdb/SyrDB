@@ -29,6 +29,7 @@ jobs:
       - name: check
         run: |
           cmake --version
+          cmake --help
 
       #- name: Install dependencies on Windows
       #  if: contains(matrix.name, 'windows')
@@ -57,12 +58,12 @@ jobs:
       #    name: ${{ matrix.artifact }}
       #    if-no-files-found: error
 
-  release:
-    name: Release
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  #release:
+  #  name: Release
+  #  needs: [build]
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v3
 
       #- name: Download artifacts
       #  uses: actions/download-artifact@v3
