@@ -13,9 +13,11 @@ jobs:
         include:
           - name: "windows"
             os: windows-latest
+            extension: "exe"
 
           - name: "linux"
             os: ubuntu-latest
+            extension: ""
 
     runs-on: ${{ matrix.os }}
 
@@ -36,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: "**/syrdb*"
-          name: syrdb-${{ matrix.name }}
+          name: syrdb-${{ matrix.name }}${{ matrix.extension }}
           if-no-files-found: error
 
   publish:
@@ -52,7 +54,8 @@ jobs:
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
-          name: SyrDB ${{ github.ref_name }}
+          tag_name: "${{ github.ref_name }}"
+          name: "SyrDB ${{ github.ref_name }}"
           files: |
             LICENSE
             **/syrdb-*
