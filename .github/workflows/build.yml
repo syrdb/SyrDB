@@ -8,39 +8,45 @@ env:
 jobs:
   build:
     name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         include:
           - name: "windows"
             os: windows-latest
-            file: "syrdb.exe"
+            path: "build/src/Release"
             extension: ".exe"
 
           - name: "linux"
             os: ubuntu-latest
-            file: "syrdb"
+            path: "build/src"
             extension: ""
 
-    runs-on: ${{ matrix.os }}
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout sources
+        uses: actions/checkout@v3
 
       - name: Configure CMake
         run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
 
-      - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      - name: Get version
+        run: |
+          VER1=$(grep -oP "[0-9]+\.[0-9]+\.[0-9]+" CMakeLists.txt)
+          VER2=$(grep -oP "(a|b|rc)[0-9]+(.dev[0-9]+)?" CMakeLists.txt)
+          echo "VERSION=$VER1$VER2" >> $GITHUB_ENV
+
+      - name: Build on ${{ matrix.name }}
+        run: cmake --build ${{ github.workspace }}/build --config ${{ env.BUILD_TYPE }}
 
       - name: Test
-        working-directory: ${{github.workspace}}/build
-        run: ctest -C ${{env.BUILD_TYPE}}
+        working-directory: ${{ github.workspace }}/build
+        run: ctest -C ${{ env.BUILD_TYPE }}
 
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: "**/${{ matrix.file }}"
-          name: syrdb-${{ matrix.name }}${{ matrix.extension }}
+          path: "${{ matrix.path }}/${{ matrix.file }}${{ matrix.extension }}"
+          name: syrdb-${{ env.VERSION }}-${{ matrix.name }}${{ matrix.extension }}
           if-no-files-found: error
 
   publish:
@@ -48,7 +54,8 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout sources
+        uses: actions/checkout@v3
 
       - name: Get version
         run: |
