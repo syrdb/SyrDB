@@ -14,12 +14,12 @@ jobs:
         include:
           - name: "windows"
             os: windows-latest
-            path: "build/src/Release/syrdb.exe"
+            path: "build/src/Release"
             extension: ".exe"
 
           - name: "linux"
             os: ubuntu-latest
-            path: "build/src/syrdb"
+            path: "build/src"
             extension: ""
 
     steps:
@@ -39,7 +39,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: "${{ matrix.path }}"
+          path: "${{ matrix.path }}/syrdb-${{ matrix.name }}${{ matrix.extension }}"
           name: syrdb-${{ matrix.name }}
           if-no-files-found: error
 
