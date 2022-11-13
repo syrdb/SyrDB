@@ -41,8 +41,6 @@
 - [x] Низкое потребление ресурсов
 
 <h1>Сборка</h1>
-В настоящее время эта база данных поддерживает только Windows, но в будущем будет добавлена ​​поддержка Linux и macOS.
-
 <h3>Сборка на Windows</h3>
 <h4>Требования</h4>
 
@@ -57,11 +55,28 @@
 > $ mkdir build
 > $ cd build
 > $ cmake .. -DCMAKE_BUILD_TYPE=Release
-> $ cmake --build .
+> $ cmake --build . --config Release
 > $ move src/Debug/syrdb.exe ./syrdb.exe
 > ```
 
 Готово! База данных собрана.
+
+<h3>Сборка на Linux</h3>
+<h4>Требования</h4>
+
+- CMake `3.12+`. **Проверено:** CMake `3.24`
+- G++
+
+1. Откройте терминал
+2. Пропишите следующие команды:
+> ```sh
+> $ git clone https://github.com/TheStngularity/SyrDB.git
+> $ cd SyrDB
+> $ mkdir build
+> $ cd build
+> $ cmake .. -DCMAKE_BUILD_TYPE=Release
+> $ cmake --build . --config Release
+> $ move src/syrdb ./syrdb
 
 <h1>Начало работы</h1>
 Для начала работы с этой базой нужно выбрать любой драйвер и написать код согласно документации.

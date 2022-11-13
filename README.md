@@ -41,8 +41,6 @@ This project is WIP <em>(<strong>W</strong>ork <strong>I</strong>n <strong>P</st
 - [x] Low resource consumption
 
 <h1>Building</h1>
-This database currently only supports Windows, but support for Linux and macOS will be added in the future.
-
 <h3>Build on Windows</h3>
 <h4>Requirements</h4>
 
@@ -57,11 +55,29 @@ This database currently only supports Windows, but support for Linux and macOS w
 > $ mkdir build
 > $ cd build
 > $ cmake .. -DCMAKE_BUILD_TYPE=Release
-> $ cmake --build .
-> $ move src/Debug/syrdb.exe ./syrdb.exe
+> $ cmake --build . --config Release
+> $ move src/Release/syrdb.exe ./syrdb.exe
 > ```
 
 Ready! Database builed.
+
+<h3>Build on Linux</h3>
+<h4>Requirements</h4>
+
+- CMake `3.12+`. **Tested:** CMake `3.24`
+- G++
+
+1. Open terminal
+2. Write the following commands:
+> ```sh
+> $ git clone https://github.com/TheStngularity/SyrDB.git
+> $ cd SyrDB
+> $ mkdir build
+> $ cd build
+> $ cmake .. -DCMAKE_BUILD_TYPE=Release
+> $ cmake --build . --config Release
+> $ move src/syrdb ./syrdb
+> ```
 
 <h1>Getting started</h1>
 To get started with this database, you need to select any driver and write code according to the documentation.
