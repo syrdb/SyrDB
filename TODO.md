@@ -38,6 +38,6 @@
         - [ ] MySQL
         - [ ] MariaDB
 - [ ] Final Testing
-- [ ] Add Linux support
+- [x] Add Linux support
 - [ ] Add macOS support
 - [ ] Add Solaris support
