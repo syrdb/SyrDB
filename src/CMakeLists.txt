@@ -12,6 +12,10 @@ else()
     add_executable(${PROJECT_NAME} main.cpp)
 endif()
 
+if(DEFINED OUTPUT_NAME)
+    set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${OUTPUT_NAME})
+endif()
+
 # About
 if(APPLE)
     set_target_properties(${PROJECT_NAME} PROPERTIES
