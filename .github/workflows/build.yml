@@ -39,7 +39,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: "${{ matrix.path }}/${{ matrix.file }}${{ matrix.extension }}"
+          path: "${{ matrix.path }}/syrdb${{ matrix.extension }}"
           name: syrdb-${{ matrix.name }}${{ matrix.extension }}
           if-no-files-found: error
 
