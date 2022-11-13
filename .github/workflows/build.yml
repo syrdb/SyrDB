@@ -48,7 +48,6 @@ jobs:
 
   publish:
     name: Publish release
-    if: ${{  }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:
