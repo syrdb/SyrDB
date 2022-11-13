@@ -75,4 +75,5 @@ jobs:
           name: "SyrDB ${{ env.VERSION }}"
           files: |
             LICENSE
+            config.yml
             **/syrdb-*
