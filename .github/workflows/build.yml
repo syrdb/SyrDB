@@ -57,15 +57,19 @@ jobs:
           VER2=$(grep -oP "(a|b|rc)[0-9]+(.dev[0-9]+)?" CMakeLists.txt)
           echo "VERSION=$VER1$VER2" >> $GITHUB_ENV
 
+      - name: Get changes
+        run: |
+          python3 -c "print('\n'.join(__import__('re').findall(r'^# v[0-9\.a-zA-Z]+[^#]*$', open('CHANGELOG.md', 'r', encoding='utf8').read(), __import__('re').MULTILINE)[0][:-1].split('\n')[1:]))" > ${{ github.workspace }}-CHANGELOG.txt
+
       - name: Download artifacts
         uses: actions/download-artifact@v3
 
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
           tag_name: "${{ env.VERSION }}"
           name: "SyrDB ${{ env.VERSION }}"
           files: |
             LICENSE
-            **/*.exe
-            **/syrdb
+            **/syrdb-*
