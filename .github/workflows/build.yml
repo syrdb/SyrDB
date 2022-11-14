@@ -34,7 +34,7 @@ jobs:
           python3 -c "print('VERSION='+__import__('re').findall(r'[0-9]+\.[0-9]+\.[0-9]+',open('CMakeLists.txt','r',encoding='utf8').read())[0]+__import__('re').findall(r'(?:a|b|rc)[0-9]+(?:.dev[0-9]+)?',open('CMakeLists.txt','r',encoding='utf8').read())[0])" >> $GITHUB_ENV
 
       - name: Configure CMake
-        run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DOUTPUT_NAME=syrdb-${{ matrix.name }}
+        run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DOUTPUT_NAME=syrdb-${{ env.VERSION }}-${{ matrix.name }}
 
       - name: Build on ${{ matrix.name }}
         run: cmake --build ${{ github.workspace }}/build --config ${{ env.BUILD_TYPE }}
