@@ -29,6 +29,10 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
+      - name: Get information (version)
+        run: |
+          python3 -c "print('VERSION='+__import__('re').findall(r'[0-9]+\.[0-9]+\.[0-9]+',open('CMakeLists.txt','r',encoding='utf8').read())[0]+__import__('re').findall(r'(?:a|b|rc)[0-9]+(?:.dev[0-9]+)?',open('CMakeLists.txt','r',encoding='utf8').read())[0])" >> $GITHUB_ENV
+
       - name: Configure CMake
         run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DOUTPUT_NAME=syrdb-${{ matrix.name }}
 
@@ -42,8 +46,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          path: "${{ matrix.path }}/syrdb-${{ matrix.name }}${{ matrix.extension }}"
-          name: syrdb-${{ matrix.name }}
+          path: "${{ matrix.path }}/syrdb-${{ env.VERSION }}-${{ matrix.name }}${{ matrix.extension }}"
+          name: syrdb-${{ env.VERSION }}-${{ matrix.name }}
           if-no-files-found: error
 
   publish:
@@ -54,15 +58,10 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Get version
+      - name: Get information (version & changes)
         run: |
-          VER1=$(grep -oP "[0-9]+\.[0-9]+\.[0-9]+" CMakeLists.txt)
-          VER2=$(grep -oP "(a|b|rc)[0-9]+(.dev[0-9]+)?" CMakeLists.txt)
-          echo "VERSION=v$VER1$VER2" >> $GITHUB_ENV
-
-      - name: Get changes
-        run: |
-          python3 -c "print('\n'.join(__import__('re').findall(r'^# v[0-9\.a-zA-Z]+[^#]*$', open('CHANGELOG.md', 'r', encoding='utf8').read(), __import__('re').MULTILINE)[0][:-1].split('\n')[1:]))" > ${{ github.workspace }}-CHANGELOG.txt
+          python3 -c "print('VERSION=v'+__import__('re').findall(r'[0-9]+\.[0-9]+\.[0-9]+',open('CMakeLists.txt','r',encoding='utf8').read())[0]+__import__('re').findall(r'(?:a|b|rc)[0-9]+(?:.dev[0-9]+)?',open('CMakeLists.txt','r',encoding='utf8').read())[0])" >> $GITHUB_ENV
+          python3 -c "print('\n'.join(__import__('re').findall(r'^# v[0-9\.a-zA-Z]+[^#]*$',open('CHANGELOG.md','r',encoding='utf8').read(),__import__('re').MULTILINE)[0].strip('\n').split('\n')[1:]))" > ${{ github.workspace }}-CHANGELOG.txt
 
       - name: Download artifacts
         uses: actions/download-artifact@v3
@@ -75,5 +74,4 @@ jobs:
           name: "SyrDB ${{ env.VERSION }}"
           files: |
             LICENSE
-            config.yml
             **/syrdb-*

@@ -9,9 +9,8 @@
 #define DICTIONARY_H_
 
 #include <iostream>
+#include <any>
 #include <map>
-
-typedef std::map<std::string, std::string> stringMap;
 
 namespace TheStngularity::SyrDB {
     /**
@@ -19,13 +18,11 @@ namespace TheStngularity::SyrDB {
      */
     class Dictionary {
         private:
-            stringMap data;
-
-            Dictionary parseDictionary(std::string string);
+            std::map<std::string, std::any> data;
 
         public:
             Dictionary();
-            Dictionary(stringMap data);
+            Dictionary(std::map<std::string, std::any> data);
 
             /**
              * @brief Get any value from data by key
@@ -33,7 +30,7 @@ namespace TheStngularity::SyrDB {
              * @param key Key (key1.key2...)
              * @return Any type value
              */
-            template<typename T>
+            template<class T>
             T get(std::string key);
 
             /**
@@ -42,14 +39,14 @@ namespace TheStngularity::SyrDB {
              * @param key Key (key1.key2...)
              * @param value Value of set
              */
-            template<typename T>
+            template<class T>
             void set(std::string key, T value);
 
             /**
              * @brief Convert this type to map
              * @return Map
              */
-            stringMap asMap();
+            std::map<std::string, std::any> asMap();
     };
 }
 
