@@ -23,6 +23,9 @@ execute_process(COMMAND git describe --always --abbrev=8
 
 set(VERSION "${PROJECT_VERSION}a1.dev1-${GIT_HASH}")
 
+# Enable testing
+enable_testing()
+
 # Info
 message("")
 message("SyrDB Version: " ${VERSION})
@@ -32,3 +35,6 @@ message("")
 
 # Sources
 add_subdirectory(src)
+
+# Testing
+add_subdirectory(tests)

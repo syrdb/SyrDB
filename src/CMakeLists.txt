@@ -20,7 +20,6 @@ endif()
 if(APPLE)
     set_target_properties(${PROJECT_NAME} PROPERTIES
         BUNDLE True
-        OUTPUT_NAME "SyrDB"
         MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/resources/app.plist
     )
 elseif(WIN32 AND MSVC)

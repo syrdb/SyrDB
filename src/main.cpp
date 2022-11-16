@@ -19,11 +19,12 @@ int main() {
 
     TheStngularity::SyrDB::Dictionary dict = TheStngularity::SyrDB::Dictionary();
     //dict.set<std::string>("text", "Hello, World");
-    dict.set<short>("short", 5);
+    //dict.set<short>("short", 5);
     //dict.set<bool>("bool", true);
     //dict.set<TheStngularity::SyrDB::Dictionary>("dict", dict);
+    //dict.get<std::string>("text");
     //logger.info(dict.get<std::string>("text"));
-    logger.info(std::to_string(dict.get<short>("short")));
+    //logger.info(std::to_string(dict.get<short>("short")));
     //logger.info(dict.get<bool>("bool") ? "true" : "false");
     //std::cout << dict.get<TheStngularity::SyrDB::Dictionary>("dict").asMap().empty() << std::endl;
     #endif
