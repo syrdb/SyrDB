@@ -10,7 +10,7 @@
         <img alt="C++" src="https://img.shields.io/badge/C++-20-EF2152">
     </a>
     <a href="https://github.com/TheStngularity/SyrDB">
-        <img alt="Platform" src="https://img.shields.io/badge/Platform-Win32-EF2152">
+        <img alt="Platform" src="https://img.shields.io/badge/Platform-Win32%20|%20Linux-EF2152">
     </a>
     <a href="https://github.com/TheStngularity/SyrDB">
         <img alt="License" src="https://img.shields.io/badge/License-BSL-EF2152">
@@ -39,6 +39,7 @@ This project is WIP <em>(<strong>W</strong>ork <strong>I</strong>n <strong>P</st
 - [ ] WebPanel
 - [ ] Supports **NoSQL** & **SQL**
 - [x] Low resource consumption
+- [ ] Semi Smart Cache Manager
 
 <h1>Building</h1>
 <h3>Build on Windows</h3>
@@ -49,15 +50,15 @@ This project is WIP <em>(<strong>W</strong>ork <strong>I</strong>n <strong>P</st
 
 1. Open console
 2. Write the following commands:
-> ```sh
-> $ git clone https://github.com/TheStngularity/SyrDB.git
-> $ cd SyrDB
-> $ mkdir build
-> $ cd build
-> $ cmake .. -DCMAKE_BUILD_TYPE=Release
-> $ cmake --build . --config Release
-> $ move src/Release/syrdb.exe ./syrdb.exe
-> ```
+    > ```shell
+    > $ git clone https://github.com/TheStngularity/SyrDB.git
+    > $ cd SyrDB
+    > $ mkdir build
+    > $ cd build
+    > $ cmake .. -DCMAKE_BUILD_TYPE=Release
+    > $ cmake --build . --config Release
+    > $ move src/Release/syrdb.exe ./syrdb.exe
+    > ```
 
 Ready! Database builed.
 
@@ -69,15 +70,15 @@ Ready! Database builed.
 
 1. Open terminal
 2. Write the following commands:
-> ```sh
-> $ git clone https://github.com/TheStngularity/SyrDB.git
-> $ cd SyrDB
-> $ mkdir build
-> $ cd build
-> $ cmake .. -DCMAKE_BUILD_TYPE=Release
-> $ cmake --build . --config Release
-> $ move src/syrdb ./syrdb
-> ```
+    > ```shell
+    > $ git clone https://github.com/TheStngularity/SyrDB.git
+    > $ cd SyrDB
+    > $ mkdir build
+    > $ cd build
+    > $ cmake .. -DCMAKE_BUILD_TYPE=Release
+    > $ cmake --build . --config Release
+    > $ move src/syrdb ./syrdb
+    > ```
 
 <h1>Getting started</h1>
 To get started with this database, you need to select any driver and write code according to the documentation.
@@ -89,7 +90,10 @@ To get started with this database, you need to select any driver and write code 
 - [ ] Python
 - [ ] C++
 - [ ] Java
-- [ ] .NET
+- [ ] .NET 6
+
+<h1>Contributing</h1>
+I will be glad if you help me develop this database. You can see how to help in the <a href="./CONTRIBUTING.md">contributing guide</a>.
 
 <h1>License</h1>
 The source code for this database is distributed under the <code>BSL</code> <em>(Business Source License)</em> license. See the <a href="./LICENSE">LICENSE</a> file for more information.

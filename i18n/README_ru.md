@@ -10,7 +10,7 @@
         <img alt="C++" src="https://img.shields.io/badge/C++-20-EF2152">
     </a>
     <a href="https://github.com/TheStngularity/SyrDB">
-        <img alt="Платформа" src="https://img.shields.io/badge/Платформа-Win32-EF2152">
+        <img alt="Платформа" src="https://img.shields.io/badge/Платформа-Win32%20|%20Linux-EF2152">
     </a>
     <a href="https://github.com/TheStngularity/SyrDB">
         <img alt="Лицензия" src="https://img.shields.io/badge/Лицензия-BSL-EF2152">
@@ -39,6 +39,7 @@
 - [ ] Веб-панель
 - [ ] Поддержка **NoSQL** & **SQL**
 - [x] Низкое потребление ресурсов
+- [ ] Полуумный менеджер кэша
 
 <h1>Сборка</h1>
 <h3>Сборка на Windows</h3>
@@ -49,15 +50,15 @@
 
 1. Откройте консоль
 2. Пропишите следующие команды:
-> ```sh
-> $ git clone https://github.com/TheStngularity/SyrDB.git
-> $ cd SyrDB
-> $ mkdir build
-> $ cd build
-> $ cmake .. -DCMAKE_BUILD_TYPE=Release
-> $ cmake --build . --config Release
-> $ move src/Debug/syrdb.exe ./syrdb.exe
-> ```
+    > ```sh
+    > $ git clone https://github.com/TheStngularity/SyrDB.git
+    > $ cd SyrDB
+    > $ mkdir build
+    > $ cd build
+    > $ cmake .. -DCMAKE_BUILD_TYPE=Release
+    > $ cmake --build . --config Release
+    > $ move src/Debug/syrdb.exe ./syrdb.exe
+    > ```
 
 Готово! База данных собрана.
 
@@ -69,14 +70,15 @@
 
 1. Откройте терминал
 2. Пропишите следующие команды:
-> ```sh
-> $ git clone https://github.com/TheStngularity/SyrDB.git
-> $ cd SyrDB
-> $ mkdir build
-> $ cd build
-> $ cmake .. -DCMAKE_BUILD_TYPE=Release
-> $ cmake --build . --config Release
-> $ move src/syrdb ./syrdb
+    > ```sh
+    > $ git clone https://github.com/TheStngularity/SyrDB.git
+    > $ cd SyrDB
+    > $ mkdir build
+    > $ cd build
+    > $ cmake .. -DCMAKE_BUILD_TYPE=Release
+    > $ cmake --build . --config Release
+    > $ move src/syrdb ./syrdb
+    > ```
 
 <h1>Начало работы</h1>
 Для начала работы с этой базой нужно выбрать любой драйвер и написать код согласно документации.
@@ -89,6 +91,9 @@
 - [ ] C++
 - [ ] Java
 - [ ] .NET
+
+<h1>Участие</h1>
+Я буду рад, если вы поможете мне в разработке данной базы данных. Вы можете посмотреть, как помочь мне в <a href="./CONTRIBUTING_ru.md">руководстве по участию</a>
 
 <h1>Лицензия</h1>
 Исходный код этой базы данных распространяется под лицензией <code>BSL</code> <em>(<strong>англ.</strong> Business Source License)</em>. Посмотрите файла <a href="../LICENSE">LICENSE</a> для получения большей информации.
