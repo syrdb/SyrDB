@@ -16,7 +16,7 @@ BEGIN
         BLOCK "040904E4"
         BEGIN
             VALUE "CompanyName", "TheStngularity"
-            VALUE "LegalCopyright", "Copyright (C) TheStngularity"
+            VALUE "LegalCopyright", "Copyright (C) 2022-presents TheStngularity"
             
             VALUE "FileVersion", VERSION
             VALUE "FileDescription", DESCRIPTION

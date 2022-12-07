@@ -13,7 +13,7 @@
         <img alt="Platform" src="https://img.shields.io/badge/Platform-Win32%20|%20Linux-EF2152">
     </a>
     <a href="https://github.com/TheStngularity/SyrDB">
-        <img alt="License" src="https://img.shields.io/badge/License-BSL-EF2152">
+        <img alt="License" src="https://img.shields.io/badge/License-GNU%20AGPL-EF2152">
     </a>
 </p>
 
@@ -96,4 +96,9 @@ To get started with this database, you need to select any driver and write code 
 I will be glad if you help me develop this database. You can see how to help in the <a href="./CONTRIBUTING.md">contributing guide</a>.
 
 <h1>License</h1>
-The source code for this database is distributed under the <code>BSL</code> <em>(Business Source License)</em> license. See the <a href="./LICENSE">LICENSE</a> file for more information.
+The source code for this database is distributed under the <code>GNU AGPL</code> <em>(GNU Affero General Public License)</em> license. See the <a href="./LICENSE">LICENSE</a> file for more information.
+
+---
+```
+Made with ❤ and 🍵 by me for you!
+```

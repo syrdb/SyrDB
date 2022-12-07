@@ -6,6 +6,8 @@ verinfo.h
 # Editor dir
 .vscode/
 .idea/
+.obsidian/
 
 # Private
 *.private*
+wiki/
