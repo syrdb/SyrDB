@@ -13,35 +13,28 @@
     If not, see <https://www.gnu.org/licenses/>.    
 */
 
-#include <iostream>
-#include <string>
-#include <map>
-#include "../utils/stringutils.h"
 #include "dictionary.h"
+#include "../utils/stringutils.h"
+#include <iostream>
+#include <map>
+#include <any>
 
 namespace TheStngularity::SyrDB {
-    Dictionary::Dictionary() {
-        this->data = {};
-    }
+    Dictionary::Dictionary(std::map<std::string, std::any> d): data(d) {}
+    Dictionary::Dictionary(Dictionary& old): data(old.asMap()) {}
+    Dictionary::Dictionary(): data({}) {}
+    Dictionary::~Dictionary() {delete &this->data;}
 
-    Dictionary::Dictionary(std::map<std::string, std::any> data) {
-        this->data = data;
-    }
-
-    // Get any value from data by key
-    template<class T>
+    template<typename T>
     T Dictionary::get(std::string key) {
-        return (T) this->get<std::string>(key).c_str();
-    }
+        std::any output = this->data;
+        std::vector<std::string> keys = TheStngularity::SyrDB::StrU::split(key, '.');
+        std::string current = keys.at(0)
+        while(current != keys.at(keys.size()-1)) {
+            if(!output.type().name() == "N14TheStngularity5SyrDB10DictionaryE")  // TheStngularity::SyrDB::Dictionary
+                break;
 
-    // Set any value of key
-    template<class T>
-    void Dictionary::set(std::string key, T value) {
-        std::cout << key << ": " << value << std::endl;
-    }
-
-    // Convert this type to map
-    std::map<std::string, std::any> Dictionary::asMap() {
-        return this->data;
+            
+        }
     }
 }

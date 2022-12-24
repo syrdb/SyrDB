@@ -1,5 +1,8 @@
 - [ ] Write `Core`
-   > `Core` is main component of SyrDB.
+    > `Core` is main component of SyrDB.
+    - [ ] Write `Security module`
+        > Security module. All security operations go through it.
+
     - [x] Write `Logger`
         > Logger needed for informate database users of current state and display warnings, errors or debug information. 
 

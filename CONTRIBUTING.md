@@ -1,7 +1,6 @@
 If you are going to help me, I will say thank you in advance. Here are written instructions for participation in the development.
 
 # Getting started
-
 First, you need to fork this repository. See [github docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo) for more information. 
 
 Second, you need to clone the repository. To do, write the following command:

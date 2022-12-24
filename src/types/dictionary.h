@@ -17,42 +17,84 @@
 #define DICTIONARY_H_
 
 #include <iostream>
-#include <any>
 #include <map>
+#include <any>
 
 namespace TheStngularity::SyrDB {
     /**
-     * @brief Dictionary type
+     * @brief Dicitonary class
      */
     class Dictionary {
         private:
             std::map<std::string, std::any> data;
 
         public:
-            Dictionary();
-            Dictionary(std::map<std::string, std::any> data);
+            /**
+             * @brief Construct a new Dictionary object by data
+             * @param d Data map
+             */
+            Dictionary(std::map<std::string, std::any> d);
 
             /**
-             * @brief Get any value from data by key
-             * @tparam T Type of get
-             * @param key Key (key1.key2...)
-             * @return Any type value
+             * @brief Construct a new Dictionary object by other Dictionary object
+             * @param old Old Dictionary object
              */
-            template<class T>
+            Dictionary(Dictionary& old);
+
+            /**
+             * @brief Construct a new Dictionary object
+             */
+            Dictionary();
+
+            /**
+             * @brief Destroy the Dictionary object
+             */
+            ~Dictionary();
+
+            /**
+             * @brief Get value by key
+             * @tparam T Type of value
+             * @param key String key (e.g. key1.key2)
+             * @return Value or null if value not found
+             */
+            template<typename T>
             T get(std::string key);
 
             /**
-             * @brief Set any value of key
-             * @tparam T Type of set
-             * @param key Key (key1.key2...)
-             * @param value Value of set
+             * @brief Set value of key
+             * @tparam T Type of value
+             * @param key String key (e.g. key1.key2)
+             * @param value Value for key
              */
-            template<class T>
+            template<typename T>
             void set(std::string key, T value);
 
             /**
-             * @brief Convert this type to map
-             * @return Map
+             * @brief Remove value of key from this dictionary
+             * @param key String key (e.g. key1.key2)
+             */
+            void remove(std::string key);
+
+            /**
+             * @brief Clear this dictionary
+             */
+            void clear();
+
+            /**
+             * @brief Get size of this dictionary
+             * @return This dictionary size 
+             */
+            int size();
+
+            /**
+             * @brief Copy this dictionary
+             * @return New Dictionary object
+             */
+            Dictionary copy();
+
+            /**
+             * @brief Convert this dictionary to map
+             * @return Map object
              */
             std::map<std::string, std::any> asMap();
     };
