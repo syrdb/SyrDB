@@ -1,51 +1,99 @@
 # SyrDB v0.0.1 Config
 # Database main settings
+
+# Database main configuration
 database:
+  # Database network settings
   network:
-    host: "127.0.0.1"  # Server host
-    port: 1859  # Server port
+    # Server (local) host. Use "0.0.0.0" for all
+    # By default: "127.0.0.1"
+    host: "127.0.0.1"
 
+    # Server (local) port
+    # By default: 1859
+    port: 1859
+
+  # Database cache settings
   cache:
-    enable: true  # Whether to enable cache
-    maxDatabases: 5  # Max databases in cache
-    maxCollection: 5  # Max collections in cache
-    maxItems: 10  # Max items in collections in cache
-
-  dataFolder: "./data"  # Storage (data) folder
-
-# WebPanel settings
-webpanel:
-  enable: true  # Whether to listen the http connections & display SyrDB WebPanel
-  http: ">= 1.1; <= 3.0"  # Required HTTP version
-  cert: null  # TLS/SSL Certification
-  key: null  # TLS/SSL Key
-  users:  # WebPanel users
-    - username: "root"  # Example username. CHANGE ME
-      password: "root"  # Example user password. CHANGE ME
-      permissions: admin  # Example user permissions
-
-# Logger settings
-logger:
-  console:
-    enable: true  # Whether to logging to the console
-    level: DEBUG  # Logger level, available: INFO, WARN, ERROR and DEBUG
-
-  file:
+    # Whether to enable cache manager
+    # Available: true or false
+    # By default: true
     enable: true
-    level: DEBUG
-    folder: "logs"  # Logger folder, null = "."
-    filename: "[DD.MM.YYYY].log"  # File name, supports time placeholders ([<format>])
-    loggingFormat: sdb-journal  # File logging format, available: sdb-journal, json or yaml
-
-# Security Settings
-security:
-  auth:
-    enable: true  # Whether to require authorization
-    accessToken: "CHANGE ME"  # SyrDB access token
-    users:  # Users available for authorization
-      - username: "root"  # Example username. CHANGE ME
-        password: "root"  # Example user password. CHANGE ME
-        permissions: admin  # Example user permissions
-        db: "$all"  # Database available for this user, $all - to specify all
     
-  maxConnections: 10  # Maximum number of connections to the database at same time. -1 = infinitely
+    # Max in-memory size of cache
+    # In "<number><unit>" 
+    # By default: 50MB
+    size: "50MB"
+
+  # Path to folder for data of database
+  # By default: ./data
+  dataFolder: "./data"
+
+# WebPanel configuration
+# WebPanel Component required
+webpanel:
+  # Whether to listen port as HTTP
+  # Available: true or false
+  # By default: true
+  enable: true
+  
+  # Required HTTP version
+  # By default: ">= 1.1; <= 3.0"
+  http: ">= 1.1; <= 3.0"
+
+  # Path to TLS/SSL Certificate
+  # null for disable
+  # By default: null
+  cert: null
+  
+  # Path to TLS/SSL Key
+  # null for disable 
+  # By default: null
+  key: null
+
+# Logger configuration
+logger:
+  # Console logger settings
+  console:
+    # Whether to enable console logger
+    # Available: true of false
+    # By default: true
+    enable: true
+
+    # Level of logger
+    # Available: INFO, WARN, ERROR or DEBUG
+    # By default: DEBUG
+    level: DEBUG
+
+  # File logger settings
+  file:
+    # Whether to enable file logger
+    # Available: true of false
+    # By default: false
+    enable: false
+
+    # Level of logger
+    # Available: INFO, WARN, ERROR or DEBUG
+    # By default: DEBUG
+    level: DEBUG
+
+    # Path to folder for logs files
+    # null - "."
+    # By default: "./logs"
+    folder: "./logs"
+
+    # Logs filename format
+    # By default: "[DD.MM.YYYY].log
+    # SS - Second; mm - Minute; HH - Hour
+    # DD - Day; MM - Month; YY - Short year
+    # YYYY - Full year
+    filename: "[DD.MM.YYYY].log"
+
+# Security configuration
+security:
+  # Maximum number of connections to the database at same time
+  # Specify -1 for disable limit
+  # By default: 10
+  maxConnections: 10
+
+  # Will add more settings in the future
