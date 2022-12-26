@@ -85,12 +85,11 @@ To get started with this database, you need to select any driver and write code 
 
 <h5>List of available drivers:</h5>
 
-- [ ] JavaScript
 - [ ] Node.JS
 - [ ] Python
 - [ ] C++
 - [ ] Java
-- [ ] .NET 6
+- [ ] .NET 6 (by @EgorBron)
 
 <h1>Contributing</h1>
 I will be glad if you help me develop this database. You can see how to help in the <a href="./CONTRIBUTING.md">contributing guide</a>.
