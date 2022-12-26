@@ -1,5 +1,5 @@
 *.md linguist-detectable
-!README*
-!TODO.md
-!CHANGELOG.md
-!CONTRIBUTING*
+\!README*
+\!TODO.md
+\!CHANGELOG.md
+\!CONTRIBUTING*
