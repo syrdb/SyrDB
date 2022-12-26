@@ -1,7 +1,7 @@
 # SyrDB Core
 Main component of database. All main operations happening here.
 
-## Core components
+## Components
 - **Logger** (`logger.h`, `logger.cpp`)
   > Logger needed for informate database users of current state and display warnings, errors or debug information.
 - **Task Manager** (`managers/task_manager/*`)
