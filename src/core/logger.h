@@ -10,7 +10,7 @@
     See the GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License along with SyrDB.
-    If not, see <https://www.gnu.org/licenses/>.    
+    If not, see <https://www.gnu.org/licenses/>.
 */
 
 #ifndef LOGGER_H_
@@ -18,9 +18,9 @@
 
 #include <iostream>
 
-namespace TheStngularity::SyrDB {
+namespace SyrDB {
     /**
-     * @brief Logger level enum
+     * @brief Logger level enumeration
      */
     enum class LoggerLevel : short {
         INFO = 0,
@@ -34,66 +34,83 @@ namespace TheStngularity::SyrDB {
      */
     class Logger {
         private:
-            bool enable;
-            LoggerLevel level;
-            std::string file;
-            std::string fileFormat;
+            LoggerLevel consoleLevel;
+            LoggerLevel fileLevel;
+            std::string folder;
+            std::string filename;
+            bool consoleEnable;
+            bool fileEnable;
 
-            void print(LoggerLevel lvl, std::string content, const std::string from, const std::string color, const std::string name);
+            void print(
+                LoggerLevel level,
+                std::string content,
+                const std::string from,
+                const std::string color,
+                const std::string name
+            );
+
+            std::string getFilename();
 
         public:
             Logger();
-            Logger(LoggerLevel maxLevel, std::string file, std::string fileFormat, bool enable);
+            Logger(
+                LoggerLevel consoleLevel,
+                LoggerLevel fileLevel,
+                std::string folder,
+                std::string filename,
+                bool consoleEnable,
+                bool fileEnable
+            );
 
             /**
-             * @brief Log information content to console
+             * @brief Print information content to console
              * @param content Content of information
              */
             void info(const std::string content);
 
             /**
-             * @brief Log information content to console
+             * @brief Print information content to console
              * @param content Content of information
-             * @param from Log from ...
+             * @param from Log from ... component
              */
             void info(const std::string content, const std::string from);
 
             /**
-             * @brief Log warning content to console
+             * @brief Print warning content to console
              * @param content Content of warning
              */
             void warn(std::string content);
 
             /**
-             * @brief Log warning content to console
+             * @brief Print warning content to console
              * @param content Content of warning
-             * @param from Log from ...
+             * @param from Log from ... component
              */
             void warn(std::string content, std::string from);
 
             /**
-             * @brief Log error content to console
+             * @brief Print error content to console
              * @param content Content of error
              */
             void error(std::string content);
 
             /**
-             * @brief Log error content to console
+             * @brief Print error content to console
              * @param content Content of error
-             * @param from Log from ...
+             * @param from Log from ... component
              */
             void error(std::string content, std::string from);
 
             /**
-             * @brief Log debug content to console
+             * @brief Print debug content to console
              * @param content Content of debug
              */
             void debug(std::string content);
 
             /**
-             * @brief Log debug content to console
+             * @brief Print debug content to console
              * @param content Content of debug
-             * @param from Log from ...
+             * @param from Log from ... component
              */
             void debug(std::string content, std::string from);
     };

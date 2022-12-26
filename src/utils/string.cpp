@@ -15,9 +15,9 @@
 
 #include <string>
 #include <vector>
-#include "stringutils.h"
+#include "string.h"
 
-namespace TheStngularity::SyrDB::StrU {
+namespace SyrDB::Utils {
     // Normalize text size
     std::string normalizeText(std::string content) {
         for(int i = 0; i < 2-content.length(); i++) content.insert(0, std::to_string('0'));

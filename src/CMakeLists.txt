@@ -1,6 +1,5 @@
 # Components
 add_subdirectory(utils)
-add_subdirectory(types)
 add_subdirectory(core)
 
 # Executable
@@ -29,5 +28,5 @@ endif()
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} SyrDB-Logger)
-target_link_libraries(${PROJECT_NAME} SyrDB-Dictionary)
+target_link_libraries(${PROJECT_NAME} SyrDB-TaskManager)
 # TODO: target link libraries

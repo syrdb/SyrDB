@@ -19,7 +19,7 @@
 #include <iostream>
 #include <vector>
 
-namespace TheStngularity::SyrDB::StrU {
+namespace SyrDB::Utils {
     /**
      * @brief Normalize text size
      * @param content Content to normalize

@@ -10,62 +10,63 @@
     See the GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License along with SyrDB.
-    If not, see <https://www.gnu.org/licenses/>.    
+    If not, see <https://www.gnu.org/licenses/>.
 */
 
 #ifndef TASK_MANAGER_H_
 #define TASK_MANAGER_H_
 
 #include <iostream>
-#include <vector>
+#include <queue>
 #include "task.h"
 
-namespace TheStngularity::SyrDB {
+namespace SyrDB::TaskManager {
     /**
-     * @brief Task manager class
+     * @brief Manager of tasks
      */
-    class TaskManager {
+    class Manager {
         private:
-            std::vector<Task> tasks;
-
+            std::queue<ITask> taskQueue;
+            
         public:
-            TaskManager();
+            Manager();
+            Manager(std::queue<ITask> queue);
+            ~Manager();
 
             /**
-             * @brief Get size of tasks queue
-             * @return Size
+             * @brief Get next task and remove current from queue
+             * @return ITask
              */
-            inline std::size_t size();
+            ITask next();
 
             /**
-             * @brief Get current task
-             * @return Current task or empty task
+             * @brief Add any task to queue
+             * @param task New task
              */
-            Task current();
+            void add(ITask task);
 
             /**
-             * @brief Add task to queue
-             * @param task Task object
+             * @brief Clear the task queue
              */
-            void addTask(Task task);
+            void clear();
 
             /**
-             * @brief Add task to queue
-             * @param task Link to task object
+             * @brief Get size of queue (task count)
+             * @return std::size_t
              */
-            void addTask(Task& task);
+            std::size_t size();
 
             /**
-             * @brief Get next task and remove current task
-             * @return Next task object or empty task if tasks queue is empty
+             * @brief Get task queue
+             * @return std::queue<ITask>
              */
-            Task next();
+            std::queue<ITask> getQueue();
 
             /**
-             * @brief Cancel any task
-             * @param index Index of task
+             * @brief Get last object of TaskManager class
+             * @return TaskManager
              */
-            void cancelTask(int index);
+            static Manager* getInstance();
     };
 }
 

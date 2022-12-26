@@ -17,14 +17,14 @@
 #include <string>
 #include "resources/verinfo.h"
 #include "core/logger.h"
-#include "types/dictionary.h"
+#include "core/managers/task_manager/task.h"
+#include "core/managers/task_manager/manager.h"
 
 int main() {
-    TheStngularity::SyrDB::Logger logger = TheStngularity::SyrDB::Logger(
-        TheStngularity::SyrDB::LoggerLevel::DEBUG, "", "none", true);
-    
-    logger.info("SyrDB v" + std::string(VERSION));
-    logger.info("Project URL: " + std::string(URL) + "\n");
+    SyrDB::Logger logger(SyrDB::LoggerLevel::DEBUG, SyrDB::LoggerLevel::DEBUG,
+        "./logs", "[dd.mm.yyyy].log", true, true);
+
+    logger.info("Welcome to SyrDB v" + std::string(VERSION));
 
     #if IS_DEBUG == 1
     logger.info("test");

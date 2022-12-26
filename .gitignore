@@ -11,3 +11,4 @@ verinfo.h
 # Private
 *.private*
 wiki/
+logs/

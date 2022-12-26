@@ -83,9 +83,9 @@ logger:
 
     # Logs filename format
     # By default: "[DD.MM.YYYY].log
-    # SS - Second; mm - Minute; HH - Hour
-    # DD - Day; MM - Month; YY - Short year; YYYY - Full year
-    filename: "[DD.MM.YYYY].log"
+    # SS - Second; MM - Minute; HH - Hour
+    # dd - Day; mm - Month; yy - Short year; yyyy - Full year
+    filename: "[dd.mm.yyyy].log"
 
 # Security configuration
 security:

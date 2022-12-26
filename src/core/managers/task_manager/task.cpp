@@ -10,25 +10,19 @@
     See the GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License along with SyrDB.
-    If not, see <https://www.gnu.org/licenses/>.    
+    If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "../../types/dictionary.h"
+#include <iostream>
+#include <vector>
 #include "task.h"
 
-namespace TheStngularity::SyrDB {
-    Task::Task(TaskType type, TheStngularity::SyrDB::Dictionary data) {
-        this->type = type;
-        this->data = data;
-    }
-
-    // Get type of this task
-    TaskType Task::getType() {
+namespace SyrDB::TaskManager {
+    TaskType ITask::getType() {
         return this->type;
     }
 
-    // Get data of this task
-    TheStngularity::SyrDB::Dictionary Task::getData() {
-        return this->data;
+    std::vector<std::string> ITask::getFields() {
+        return {"type"};
     }
 }

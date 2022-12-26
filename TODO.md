@@ -6,7 +6,7 @@
     - [x] Write `Logger`
         > Logger needed for informate database users of current state and display warnings, errors or debug information. 
 
-    - [ ] Write `Task Manager`
+    - [x] Write `Task Manager`
         > In order not to lose data when writing or not to give out-of-date data after reading, all tasks are performed in turn. To implement this queue, this manager is needed.
 
     - [ ] Write `Semi-Smart Cache Manager`
