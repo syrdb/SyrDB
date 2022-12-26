@@ -1,1 +1,1 @@
-specification/*.md linguist-detectable
+specification/**/*.md linguist-detectable
